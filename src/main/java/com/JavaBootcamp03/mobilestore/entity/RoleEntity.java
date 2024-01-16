@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Data
-@Entity(name = "roles")
+@Entity(name = "role")
 public class RoleEntity {
 
     @Id
@@ -15,7 +15,7 @@ public class RoleEntity {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "role") //Lưu ý : tên thuộc tính của entity bên UserEntity
+    @OneToMany(mappedBy = "role")
     private List<UserEntity> users;
 
 }
