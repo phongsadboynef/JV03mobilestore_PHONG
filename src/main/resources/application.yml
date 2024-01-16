@@ -1,6 +1,6 @@
 # Config port, context path
 server:
-  port: 9090
+  port: 9191
   servlet:
     context-path: /mobilestore
 
@@ -24,7 +24,7 @@ spring:
             enabled: true
     # Default login security
     security:
-        UserEntity:
+        user:
             name: admin
             password: admin123
 
@@ -44,3 +44,14 @@ management:
     info:
         env:
             enabled: true
+
+# Config info endpoint
+info:
+    app:
+      name: Mobile Store
+      description: Mobile Store
+      version: 1.0.0
+      license: Apache License 2.0
+      licenseUrl: https://www.apache.org/licenses/LICENSE-2.0.html
+      contact.name: Mobile Store
+      contact.url: https://www.mobilestore.com
