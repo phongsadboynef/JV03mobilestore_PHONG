@@ -9,7 +9,7 @@ spring:
     datasource:
         url: jdbc:mysql://localhost:3306/mobileStore
         username: root
-        password: Kh12.v3@C4b5rs6ft
+        password: admin123
         driver-class-name: com.mysql.cj.jdbc.Driver
     main:
         allow-circular-references: true
