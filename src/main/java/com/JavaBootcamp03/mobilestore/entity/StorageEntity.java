@@ -5,16 +5,15 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-@Entity(name = "category")
-public class CategoryEntity {
-
+@Entity(name = "storage")
+public class StorageEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "categoryName")
-    private String name;
+    @Column(name = "storageName")
+    private String storage;
 
-    @OneToMany(mappedBy = "category")
-    private List<ProductEntity> products;
+    @OneToMany(mappedBy = "storage")
+    private List<ProductDetailEntity> productDetails;
 }
