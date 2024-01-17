@@ -20,5 +20,4 @@ public class UserEntity {
     @ManyToOne
     @JoinColumn(name = "id_role")
     private RoleEntity role;
-
 }
