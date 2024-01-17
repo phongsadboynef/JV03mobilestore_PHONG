@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Folders to ignore ###
+utility/docker_compose/elastic_data/
+utility/docker_compose/logstash/
+utility/docker_compose/mysql/
