@@ -15,7 +15,9 @@ public class RoleEntity {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "role")
+    @OneToMany(mappedBy = "roleUser")
     private List<UserEntity> users;
 
+    @OneToMany(mappedBy = "roleCustomer")
+    private List<CustomerEntity> customers;
 }
