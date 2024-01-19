@@ -4,9 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
-@Entity(name = "user")
-public class UserEntity {
-
+@Entity(name = "customer")
+public class CustomerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -17,19 +16,22 @@ public class UserEntity {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "usrFirstName")
+    @Column(name = "custFirstName")
     private String firstName;
 
-    @Column(name = "usrLastName")
+    @Column(name = "custLastName")
     private String lastName;
 
-    @Column(name = "usrDOB")
+    @Column(name = "custDOB")
     private String dob;
 
-    @Column(name = "usrGender")
+    @Column(name = "custGender")
     private int gender;
+
+    @Column(name = "custRank")
+    private String rank;
 
     @ManyToOne
     @JoinColumn(name = "id_role")
-    private RoleEntity roleUser;
+    private RoleEntity roleCustomer;
 }
