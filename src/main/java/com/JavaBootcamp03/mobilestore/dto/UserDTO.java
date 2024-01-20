@@ -10,6 +10,6 @@ public class UserDTO implements Serializable {
     private String password;
     private String usrFirstName;
     private String usrLastName;
-    private String usrDOB;
+    private java.sql.Date usrDOB;
     private int usrGender;
 }
