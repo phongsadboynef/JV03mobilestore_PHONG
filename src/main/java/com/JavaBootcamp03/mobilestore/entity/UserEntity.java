@@ -24,7 +24,7 @@ public class UserEntity {
     private String lastName;
 
     @Column(name = "usrDOB")
-    private String dob;
+    private java.sql.Date dob;
 
     @Column(name = "usrGender")
     private int gender;

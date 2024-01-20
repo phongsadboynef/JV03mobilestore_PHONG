@@ -10,6 +10,6 @@ public class CustomerDTO implements Serializable {
     private String password;
     private String custFirstName;
     private String custLastName;
-    private String custDOB;
+    private java.sql.Date custDOB;
     private int custGender;
 }
