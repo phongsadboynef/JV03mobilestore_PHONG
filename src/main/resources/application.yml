@@ -4,8 +4,10 @@ server:
   servlet:
     context-path: /mobilestore
 
-# Config database
+# Config static resources, database, jpa, security
 spring:
+    resources:
+        static-locations: classpath:/static/
     datasource:
         url: jdbc:mysql://localhost:3306/mobileStore
         username: root
@@ -16,6 +18,8 @@ spring:
     jpa:
         hibernate:
             ddl-auto: none
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         show-sql: true
         properties:
             hibernate:
@@ -55,3 +59,7 @@ info:
       licenseUrl: https://www.apache.org/licenses/LICENSE-2.0.html
       contact.name: Mobile Store
       contact.url: https://www.mobilestore.com
+
+# Config security
+token:
+  key: KZ7OGztgth8Etab8ajZGyAIghh3HUuw39zIsK/tMs7s=
