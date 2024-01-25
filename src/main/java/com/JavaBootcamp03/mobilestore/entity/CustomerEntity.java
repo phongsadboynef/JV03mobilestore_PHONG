@@ -1,10 +1,15 @@
 package com.JavaBootcamp03.mobilestore.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
+
 import java.util.List;
 
 @Data
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "customer")
 public class CustomerEntity {
     @Id
