@@ -2,9 +2,14 @@ package com.JavaBootcamp03.mobilestore.entity;
 
 import lombok.Data;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
 @Data
+@Setter
+@Getter
 @Entity(name = "role")
 public class RoleEntity {
 
