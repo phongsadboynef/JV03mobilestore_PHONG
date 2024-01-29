@@ -24,6 +24,7 @@ public class CustomerServiceImp implements CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     public CustomerServiceImp(CustomerRepository customerRepository, PasswordEncoder passwordEncoder) {
