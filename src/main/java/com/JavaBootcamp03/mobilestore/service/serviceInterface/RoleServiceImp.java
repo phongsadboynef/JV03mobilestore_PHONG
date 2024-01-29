@@ -4,7 +4,7 @@ import com.JavaBootcamp03.mobilestore.dto.RoleDTO;
 import com.JavaBootcamp03.mobilestore.entity.RoleEntity;
 import java.util.List;
 
-public interface RoleService {
+public interface RoleServiceImp {
     List<RoleEntity> getAllRole();
 
     RoleEntity createRole(RoleDTO roleDTO);

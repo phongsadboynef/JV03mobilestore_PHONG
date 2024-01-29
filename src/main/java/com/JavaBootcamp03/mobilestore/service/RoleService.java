@@ -3,7 +3,7 @@ package com.JavaBootcamp03.mobilestore.service;
 import com.JavaBootcamp03.mobilestore.dto.RoleDTO;
 import com.JavaBootcamp03.mobilestore.entity.RoleEntity;
 import com.JavaBootcamp03.mobilestore.repository.RoleRepository;
-import com.JavaBootcamp03.mobilestore.service.serviceInterface.RoleService;
+import com.JavaBootcamp03.mobilestore.service.serviceInterface.RoleServiceImp;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,11 +12,11 @@ import java.util.List;
 
 @NoArgsConstructor
 @Service
-public class RoleServiceImp implements RoleService {
+public class RoleService implements RoleServiceImp {
     @Autowired
     private RoleRepository roleRepository;
 
-    public RoleServiceImp(RoleRepository roleRepository) {
+    public RoleService(RoleRepository roleRepository) {
         super();
         this.roleRepository = roleRepository;
     }

@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.JavaBootcamp03.mobilestore.dto.RoleDTO;
 import com.JavaBootcamp03.mobilestore.entity.RoleEntity;
-import com.JavaBootcamp03.mobilestore.service.serviceInterface.RoleService;
+import com.JavaBootcamp03.mobilestore.service.serviceInterface.RoleServiceImp;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,22 +20,22 @@ import java.util.stream.Collectors;
 @RequestMapping("/role")
 public class RoleController {
     @Autowired
-    private RoleService roleService;
+    private RoleServiceImp roleServiceImp;
 
     @Autowired
     private ModelMapper modelMapper;
 
     private Logger logger = LoggerFactory.getLogger(RoleController.class);
 
-    public RoleController(RoleService roleService) {
+    public RoleController(RoleServiceImp roleServiceImp) {
         super();
-        this.roleService = roleService;
+        this.roleServiceImp = roleServiceImp;
     }
 
     @GetMapping("/list")
     public List<RoleDTO> getRoles(){
         logger.info("Roles are retrieved");
-        return roleService.getAllRole()
+        return roleServiceImp.getAllRole()
                 .stream().map(roleList -> modelMapper.map(roleList, RoleDTO.class))
                 .collect(Collectors.toList());
     }
@@ -43,7 +43,7 @@ public class RoleController {
     @GetMapping("/{id}")
     public ResponseEntity<RoleDTO> getRoleById(@PathVariable(name ="id") int id){
         logger.info("Role is retrieved");
-        RoleEntity roleEntity = roleService.getRoleById(id);
+        RoleEntity roleEntity = roleServiceImp.getRoleById(id);
 
         RoleDTO roleDTO = modelMapper.map(roleEntity, RoleDTO.class);
 
@@ -53,7 +53,7 @@ public class RoleController {
     @PostMapping("/create")
     public ResponseEntity<RoleDTO> createRole(@RequestBody RoleDTO roleDTO) {
         logger.info("Role is created");
-        RoleEntity roleEntity = roleService.createRole(roleDTO);
+        RoleEntity roleEntity = roleServiceImp.createRole(roleDTO);
 
         RoleDTO roleDTOResponse = modelMapper.map(roleEntity, RoleDTO.class);
 
@@ -63,7 +63,7 @@ public class RoleController {
     @PutMapping("/{id}")
     public ResponseEntity<RoleDTO> updateRole(@PathVariable(name = "id") int id, @RequestBody RoleDTO roleDTO) {
         logger.info("Role is updated");
-        RoleEntity roleEntity = roleService.updateRole(id, roleDTO);
+        RoleEntity roleEntity = roleServiceImp.updateRole(id, roleDTO);
 
         RoleDTO roleDTOResponse = modelMapper.map(roleEntity, RoleDTO.class);
 
@@ -74,7 +74,7 @@ public class RoleController {
     public ResponseEntity<ApiResponse> deleteRole(@PathVariable(name = "id") int id) {
         logger.info("Role is deleted");
 
-        roleService.deleteRole(id);
+        roleServiceImp.deleteRole(id);
 
         ApiResponse apiResponse = new ApiResponse(Boolean.TRUE, 200, "Role is deleted successfully","");
 
