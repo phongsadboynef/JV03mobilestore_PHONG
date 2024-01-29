@@ -96,7 +96,7 @@ public class CustomerController {
         logger.info("Customer is deleted");
         customerService.deleteCustomer(id);
 
-        ApiResponse apiResponse = new ApiResponse(Boolean.TRUE, 200, "Customer is deleted successfully");
+        ApiResponse apiResponse = new ApiResponse(Boolean.TRUE, 200, "Customer is deleted successfully","");
 
         return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.OK);
     }
