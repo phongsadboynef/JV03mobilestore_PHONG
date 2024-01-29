@@ -1,5 +1,6 @@
 package com.JavaBootcamp03.mobilestore.service;
 
+import com.JavaBootcamp03.mobilestore.dto.CustomerDTO;
 import com.JavaBootcamp03.mobilestore.entity.CustomerEntity;
 import com.JavaBootcamp03.mobilestore.entity.RoleEntity;
 import com.JavaBootcamp03.mobilestore.repository.CustomerRepository;
@@ -7,20 +8,29 @@ import com.JavaBootcamp03.mobilestore.repository.RoleRepository;
 import com.JavaBootcamp03.mobilestore.service.serviceInterface.CustomerService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 @AllArgsConstructor
 @NoArgsConstructor
+@Service
 public class CustomerServiceImp implements CustomerService {
+    @Autowired
     private RoleRepository roleRepository;
+
+    @Autowired
     private CustomerRepository customerRepository;
+
     private PasswordEncoder passwordEncoder;
-    private ModelMapper modelMapper;
+
+    public CustomerServiceImp(CustomerRepository customerRepository, PasswordEncoder passwordEncoder) {
+        super();
+        this.customerRepository = customerRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public List<CustomerEntity> getAllCustomer() {
@@ -28,31 +38,45 @@ public class CustomerServiceImp implements CustomerService {
     }
 
     @Override
-    public CustomerEntity createCustomer(CustomerEntity customer) {
-        RoleEntity role = checkRoleExist();
+    public CustomerEntity createCustomer(CustomerDTO customerDTO) {
+        CustomerEntity customer = new CustomerEntity();
+
+        customer.setEmail(customerDTO.getEmail());
+        customer.setPassword(passwordEncoder.encode(customerDTO.getPassword()));
+        customer.setFirstName(customerDTO.getFirstName());
+        customer.setLastName(customerDTO.getLastName());
+        customer.setDob(customerDTO.getDob());
+        customer.setGender(customerDTO.getGender());
+
+        RoleEntity role = roleRepository.findByName("CUSTOMER");
+        if(role == null){
+            role = checkRoleExist();
+        }
         customer.setRoleCustomer(role);
 
         return customerRepository.save(customer);
     }
 
+    private RoleEntity checkRoleExist(){
+        RoleEntity role = new RoleEntity();
+        role.setName("CUSTOMER");
+        return roleRepository.save(role);
+    }
+
     @Override
-    public CustomerEntity updateCustomer(int id, CustomerEntity customer) {
+    public CustomerEntity updateCustomer(int id, CustomerDTO customerDTO) {
         CustomerEntity customerEntity = customerRepository.findById(id);
 
         if(customerEntity != null){
-            customerEntity.setFirstName(customer.getFirstName());
-            customerEntity.setLastName(customer.getLastName());
-            customerEntity.setDob(customer.getDob());
-            customerEntity.setGender(customer.getGender());
-            customerEntity.setRank(customer.getRank());
-            customerEntity.setRoleCustomer(customer.getRoleCustomer());
-            customerEntity.setAddressDetails(customer.getAddressDetails());
-            customerEntity.setEmail(customer.getEmail());
-            customerEntity.setPassword(customer.getPassword());
+            customerEntity.setEmail(customerDTO.getEmail());
+            customerEntity.setPassword(passwordEncoder.encode(customerDTO.getPassword()));
+            customerEntity.setFirstName(customerDTO.getFirstName());
+            customerEntity.setLastName(customerDTO.getLastName());
+            customerEntity.setDob(customerDTO.getDob());
+            customerEntity.setGender(customerDTO.getGender());
 
             return customerRepository.save(customerEntity);
         }
-
 
         return null;
     }
@@ -60,6 +84,7 @@ public class CustomerServiceImp implements CustomerService {
     @Override
     public void deleteCustomer(int id) {
         CustomerEntity customerEntity = customerRepository.findById(id);
+
         if(customerEntity != null){
             customerRepository.delete(customerEntity);
         }
@@ -84,9 +109,12 @@ public class CustomerServiceImp implements CustomerService {
         return null;
     }
 
-    private RoleEntity checkRoleExist(){
-        RoleEntity role = new RoleEntity();
-        role.setName("CUSTOMER");
-        return roleRepository.save(role);
+    @Override
+    public List<CustomerEntity> getCustomerByRoleId(int id) {
+        RoleEntity role = roleRepository.findById(id);
+
+        int roleID = role.getId();
+
+        return customerRepository.findByRoleCustomer_Id(roleID);
     }
 }

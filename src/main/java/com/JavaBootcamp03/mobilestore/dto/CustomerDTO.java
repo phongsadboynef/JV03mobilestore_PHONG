@@ -19,5 +19,4 @@ public class CustomerDTO implements Serializable {
     private java.sql.Date dob;
     private int gender;
     private RoleDTO roleCustomer;
-    private List<AddressDetailDTO> listAddress;
 }
