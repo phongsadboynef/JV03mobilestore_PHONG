@@ -1,9 +1,7 @@
 package com.JavaBootcamp03.mobilestore.service;
 
 import com.JavaBootcamp03.mobilestore.dto.SubCategoryDTO;
-import com.JavaBootcamp03.mobilestore.entity.CategoryEntity;
 import com.JavaBootcamp03.mobilestore.entity.SubCategoryEntity;
-import com.JavaBootcamp03.mobilestore.repository.CategoryRepository;
 import com.JavaBootcamp03.mobilestore.repository.SubCategoryRepository;
 import com.JavaBootcamp03.mobilestore.service.serviceInterface.SubCategoryServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +29,45 @@ public class SubCategoryService implements SubCategoryServiceImp {
             listDTO.add(subCategoryDTO);
         }
         return listDTO;
+    }
+
+    @Override
+    public SubCategoryEntity getSubCatById(int id){
+        return subCategoryRepository.findById(id);
+    }
+
+    @Override
+    public SubCategoryEntity getSubCatByName(String name){
+        return subCategoryRepository.findByName(name);
+    }
+
+    @Override
+    public List<SubCategoryEntity> findAll(){
+        return subCategoryRepository.findAll();
+    }
+
+    @Override
+    public SubCategoryEntity createSubCat(SubCategoryDTO subCatDTO){
+        SubCategoryEntity subCat = new SubCategoryEntity();
+
+        subCat.setName(subCatDTO.getName());
+        subCat.setDescription(subCatDTO.getDescription());
+
+        return subCategoryRepository.save(subCat);
+    }
+
+    @Override
+    public SubCategoryEntity updateSubCat(int id, SubCategoryDTO subCatDTO){
+        SubCategoryEntity subCat = subCategoryRepository.findById(id);
+
+        subCat.setName(subCatDTO.getName());
+        subCat.setDescription(subCatDTO.getDescription());
+
+        return subCategoryRepository.save(subCat);
+    }
+
+    @Override
+    public void deleteSubCat(int id){
+        subCategoryRepository.deleteById(id);
     }
 }
