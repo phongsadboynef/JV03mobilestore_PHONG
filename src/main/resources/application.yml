@@ -60,9 +60,7 @@ info:
       contact.name: Mobile Store
       contact.url: https://www.mobilestore.com
 
-## Config security
-#token:
-##  key: KZ7OGztgth8Etab8ajZGyAIghh3HUuw39zIsK/tMs7s=
+# Config Jwt
 jwt:
   secret: daf66e01593f61a15b857cf433aae03a005812b31234e149036bcc8dee755dbb
-  expiration: 604800000
+  expiration: 86400000  # 1 day (24 hours - 24*60*60*1000)
