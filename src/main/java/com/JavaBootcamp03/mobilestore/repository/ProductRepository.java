@@ -12,3 +12,4 @@ public interface ProductRepository extends JpaRepository<ProductEntity,Integer> 
 
     List<ProductEntity> findAllByProductSubCat_Id(int id);
 }
+
