@@ -1,15 +1,15 @@
 package com.JavaBootcamp03.mobilestore.service.serviceInterface;
 
+import com.JavaBootcamp03.mobilestore.dto.CustomerDTO;
 import com.JavaBootcamp03.mobilestore.entity.CustomerEntity;
-
 import java.util.List;
 
 public interface CustomerService {
     List<CustomerEntity> getAllCustomer();
 
-    CustomerEntity createCustomer(CustomerEntity customer);
+    CustomerEntity createCustomer(CustomerDTO customerDTO);
 
-    CustomerEntity updateCustomer(int id, CustomerEntity customer);
+    CustomerEntity updateCustomer(int id, CustomerDTO customerDTO);
 
     void deleteCustomer(int id);
 
@@ -18,4 +18,6 @@ public interface CustomerService {
     CustomerEntity getCustomerById(int id);
 
     CustomerEntity checkLogin(String email, String password);
+
+    List<CustomerEntity> getCustomerByRoleId(int id);
 }

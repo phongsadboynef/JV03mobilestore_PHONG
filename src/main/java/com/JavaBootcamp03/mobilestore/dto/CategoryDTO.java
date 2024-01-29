@@ -6,4 +6,5 @@ import java.io.Serializable;
 public class CategoryDTO implements Serializable {
     private int id;
     private String categoryName;
+    private String description;
 }
