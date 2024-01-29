@@ -1,7 +1,7 @@
 package com.JavaBootcamp03.mobilestore.service;
 
 import com.JavaBootcamp03.mobilestore.entity.ProductEntity;
-import com.JavaBootcamp03.mobilestore.service.serviceInterface.ReviewService;
+import com.JavaBootcamp03.mobilestore.service.serviceInterface.ReviewServiceImp;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +15,14 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Service
-public class ReviewServiceImp implements ReviewService {
+public class ReviewService implements ReviewServiceImp {
     @Autowired
     private ReviewRepository reviewRepository;
 
     @Autowired
     private ProductService productService;
 
-    public ReviewServiceImp(ReviewRepository reviewRepository) {
+    public ReviewService(ReviewRepository reviewRepository) {
         super();
         this.reviewRepository = reviewRepository;
     }

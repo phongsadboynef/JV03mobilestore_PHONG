@@ -5,7 +5,7 @@ import com.JavaBootcamp03.mobilestore.entity.CustomerEntity;
 import com.JavaBootcamp03.mobilestore.entity.RoleEntity;
 import com.JavaBootcamp03.mobilestore.repository.CustomerRepository;
 import com.JavaBootcamp03.mobilestore.repository.RoleRepository;
-import com.JavaBootcamp03.mobilestore.service.serviceInterface.CustomerService;
+import com.JavaBootcamp03.mobilestore.service.serviceInterface.CustomerServiceImp;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Service
-public class CustomerServiceImp implements CustomerService {
+public class CustomerService implements CustomerServiceImp {
     @Autowired
     private RoleRepository roleRepository;
 
@@ -27,7 +27,7 @@ public class CustomerServiceImp implements CustomerService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public CustomerServiceImp(CustomerRepository customerRepository, PasswordEncoder passwordEncoder) {
+    public CustomerService(CustomerRepository customerRepository, PasswordEncoder passwordEncoder) {
         super();
         this.customerRepository = customerRepository;
         this.passwordEncoder = passwordEncoder;

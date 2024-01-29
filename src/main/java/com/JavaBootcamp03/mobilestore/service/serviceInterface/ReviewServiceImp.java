@@ -5,7 +5,7 @@ import com.JavaBootcamp03.mobilestore.dto.ReviewDTO;
 
 import java.util.List;
 
-public interface ReviewService {
+public interface ReviewServiceImp {
     List<ReviewEntity> getAllReview();
 
     ReviewEntity getReviewById(int id);

@@ -4,7 +4,7 @@ import com.JavaBootcamp03.mobilestore.dto.CustomerDTO;
 import com.JavaBootcamp03.mobilestore.entity.CustomerEntity;
 import java.util.List;
 
-public interface CustomerService {
+public interface CustomerServiceImp {
     List<CustomerEntity> getAllCustomer();
 
     CustomerEntity createCustomer(CustomerDTO customerDTO);
