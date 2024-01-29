@@ -76,7 +76,7 @@ public class RoleController {
 
         roleService.deleteRole(id);
 
-        ApiResponse apiResponse = new ApiResponse(Boolean.TRUE, 200, "Role is deleted successfully");
+        ApiResponse apiResponse = new ApiResponse(Boolean.TRUE, 200, "Role is deleted successfully","");
 
         return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.OK);
     }

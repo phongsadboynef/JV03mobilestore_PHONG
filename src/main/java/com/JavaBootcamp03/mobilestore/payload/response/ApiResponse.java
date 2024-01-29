@@ -12,7 +12,7 @@ public class ApiResponse {
     private Boolean success = Boolean.TRUE;
     private int statusCode = 200;
     private String messsage = "";
-//    private Object data;
+    private Object data;
 //    private String accessToken;
 //    private String tokenType = "Bearer";
 //    private String email;

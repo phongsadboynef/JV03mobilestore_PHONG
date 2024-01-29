@@ -14,14 +14,14 @@ public class ProductDetailEntity {
     @Column(name = "id_product_detail")
     private int idProductDetail;
 
-    @Column(name = "id_color")
-    private int idColor;
+    /*@Column(name = "id_color")
+    private int idColor;*/
 
     @Column(name = "id_product")
     private int idProduct;
 
-    @Column(name = "id_storage")
-    private int idStorage;
+    /*@Column(name = "id_storage")
+    private int idStorage;*/
 
     @Column(name = "id_promotion")
     private int idPromotion;

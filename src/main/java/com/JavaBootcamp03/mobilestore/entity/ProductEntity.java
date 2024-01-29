@@ -17,13 +17,7 @@ public class ProductEntity {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "price")
-    private double price;
-
-    @Column(name = "tags")
-    private String tag;
-
     @ManyToOne
-    @JoinColumn(name = "id_category")
-    private CategoryEntity category;
+    @JoinColumn(name = "id_subCat")
+    private SubCategoryEntity subCategory;
 }
