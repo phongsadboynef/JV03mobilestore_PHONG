@@ -13,19 +13,27 @@ public class SubCategoryEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-
     @Column(name = "subCatName")
     private String name;
 
     @Column(name = "subCatDescription")
     private String description;
 
+    @Column(name ="subCat_parentID")
+    private int subCatParentID;
+
+    @Column(name="createdAt")
+    private String createdAt;
+
+    @Column(name="deletedAt")
+    private String deletedAt;
+
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_category")
     private CategoryEntity category;
 
-    @OneToMany(mappedBy = "subCategory")
-    private List<ProductEntity> product;
+    @OneToMany(mappedBy = "productSubCat")
+    private List<ProductEntity> productEntityList;
 
 }
