@@ -90,12 +90,6 @@ public class AuthController {
         apiResponse.setData(customerResponse);
 
         return new ResponseEntity<>(apiResponse, HttpStatus.OK);
-
-//        CustomerEntity customer = customerServiceImp.createCustomer(customerDTO);
-//
-//        CustomerDTO customerResponse = modelMapper.map(customer, CustomerDTO.class);
-//
-//        return new ResponseEntity<CustomerDTO>(customerResponse, HttpStatus.CREATED);
     }
 }
 
