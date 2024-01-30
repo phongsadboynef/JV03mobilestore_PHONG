@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
     private Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-    @GetMapping("/index")
+    @GetMapping("/")
     public ModelAndView index() {
         return new ModelAndView("index");
     }

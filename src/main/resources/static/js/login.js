@@ -21,8 +21,30 @@ $(document).ready(function(){
                 password: password
             }
         }).done(function(data){
-            console.log("server tra ve ", data)
+            console.log("server tra ve ", data);
+            window.location.href = "/mobilestore/";
         })
-    })
+    });
 
+    $("#btn-sign-up").click(function(){
+        var email = $("#emailSignUp").val()
+        var password = $("#passSignUp").val()
+
+        console.log("email : ",email, " password : ",password);
+
+        $.ajax({
+            url: "http://localhost:9191/mobilestore/login/signup",
+            method: "post",
+            contentType: "application/json; charset=utf-8",
+            dataType   : "json",
+            data: JSON.stringify({
+                email: email,
+                password: password
+            })
+        }).done(function(data){
+            console.log("server tra ve ", data);
+            alert("Đăng ký thành công");
+            window.location.href = "/mobilestore/";
+        })
+    });
 })

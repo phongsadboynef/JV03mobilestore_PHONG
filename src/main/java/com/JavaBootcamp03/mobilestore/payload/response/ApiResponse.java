@@ -13,8 +13,4 @@ public class ApiResponse {
     private int statusCode = 200;
     private String messsage = "";
     private Object data;
-//    private String accessToken;
-//    private String tokenType = "Bearer";
-//    private String email;
-//    private String password;
 }

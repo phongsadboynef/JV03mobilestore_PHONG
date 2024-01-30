@@ -9,6 +9,9 @@ import java.util.List;
 @Repository
 public interface CustomerRepository extends JpaRepository<CustomerEntity, Integer> {
     CustomerEntity findByEmail(String email);
+
     CustomerEntity findById(int id);
     List<CustomerEntity> findByRoleCustomer_Id(int id);
+
+    Boolean existsByEmail(String email);
 }
