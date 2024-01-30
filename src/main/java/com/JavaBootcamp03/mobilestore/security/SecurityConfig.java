@@ -53,15 +53,16 @@ public class SecurityConfig {
         });
 
         httpSecurity.authorizeHttpRequests(authorize ->
-                authorize.requestMatchers("/login/**", "/category/**", "/images/**", "/js/**",
-                                "/css/**", "/fonts/**", "/screenshot/**", "/vendor/**").permitAll()
+                authorize.requestMatchers("/", "/login/**", "/category/**", "/images/**",
+                                "/js/**", "/css/**", "/fonts/**", "/screenshot/**", "/vendor/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/product/**", "/customer/**", "/subCat/**",
                                 "/role/**", "/review/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/login/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/product/**").hasRole("CUSTOMER")
                         .requestMatchers(HttpMethod.PUT, "/product/**").hasRole("CUSTOMER")
                         .requestMatchers(HttpMethod.DELETE).hasRole("CUSTOMER")
                         .anyRequest().authenticated()
-        ).httpBasic(Customizer.withDefaults());
+        );
 
         httpSecurity.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 

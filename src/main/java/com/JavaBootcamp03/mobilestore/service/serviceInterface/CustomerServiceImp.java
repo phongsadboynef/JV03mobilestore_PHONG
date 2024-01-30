@@ -20,4 +20,8 @@ public interface CustomerServiceImp {
     CustomerEntity checkLogin(String email, String password);
 
     List<CustomerEntity> getCustomerByRoleId(int id);
+
+    Boolean existsByEmail(String email);
+
+    CustomerEntity signUpCustomer(CustomerDTO customerDTO);
 }

@@ -118,4 +118,25 @@ public class CustomerService implements CustomerServiceImp {
 
         return customerRepository.findByRoleCustomer_Id(roleID);
     }
+
+    @Override
+    public Boolean existsByEmail(String email) {
+        return customerRepository.existsByEmail(email);
+    }
+
+    @Override
+    public CustomerEntity signUpCustomer(CustomerDTO customerDTO) {
+        CustomerEntity customer = new CustomerEntity();
+
+        customer.setEmail(customerDTO.getEmail());
+        customer.setPassword(passwordEncoder.encode(customerDTO.getPassword()));
+
+        RoleEntity role = roleRepository.findByName("CUSTOMER");
+        if(role == null){
+            role = checkRoleExist();
+        }
+        customer.setRoleCustomer(role);
+
+        return customerRepository.save(customer);
+    }
 }
